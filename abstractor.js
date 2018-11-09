@@ -28,6 +28,7 @@ var Abstractor = function(wd) {
 					//_thissuper.displayNoFile();
 				}
             };
+			console.log(this.href);
 			_request.open("GET", this.href, true);
             _request.send();
 		},
