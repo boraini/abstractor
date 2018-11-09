@@ -20,14 +20,14 @@ var Abstractor = function(wd) {
 		reload: function() {
 			var _request = new XMLHttpRequest();
 			var _thissuper = this;
-			_request.onreadystatechange = function() {
+			_request.onreadystatechange = (function(loc, ev) {
                 if (this.readyState == 4 && this.status == 200) {
-                    _thissuper.inject(this.responseText, true);
+                    loc._parentAbs.inject(this.responseText, true);
                 }
 				else {
 					//_thissuper.displayNoFile();
 				}
-            };
+            }).bind(null, this);
 			console.log(this);
 			_request.open("GET", this._href, true);
             _request.send();
@@ -38,6 +38,7 @@ var Abstractor = function(wd) {
 			if (this._href) this.reload();
 		}
 	};
+	this.location._parentAbs = this;
 	this.inject = function(txt, append) {
 		var prsv = this.target.querySelectorAll(":not(.non-abstract)");
 		if (!append) {
