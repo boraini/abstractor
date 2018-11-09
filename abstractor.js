@@ -29,11 +29,13 @@ var Abstractor = function(wd) {
 				}
             };
 			console.log(this);
-			try { _request.open("GET", this.href, true);
-            _request.send(); }
+			_request.open("GET", this._href, true);
+            _request.send();
 		},
 		set href(url) {
-			this.reload();
+			this._href = url;
+			console.log(this._href);
+			if (this._href) this.reload();
 		}
 	};
 	this.inject = function(txt, append) {
