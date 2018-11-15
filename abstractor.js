@@ -1,3 +1,5 @@
+//Abstractor.js by boraini. boraini.github.io github.com/boraini
+
 var css = "\
 	.abstracted {\
 		position: relative;\
@@ -10,7 +12,7 @@ var css = "\
 	}\
 ";
 addEventListener("load", function() {
-	
+
 });
 var Abstractor = function(wd) {
 	this.target = wd || document.body;
